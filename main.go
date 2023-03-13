@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"flag"
-	"fmt"
 	"io"
 	"log"
 	"os"
@@ -21,9 +20,10 @@ func main() {
 	if err != nil {
 		logger.Fatalf("Failed to open %s", err)
 	}
+	_ = jsn
 	//jsonStr := fmt.Sprint(jsn)
-	fmt.Print(jsn["lines"])
-	fmt.Print(jsn["json"])
+	//fmt.Print(jsn["lines"])
+	//fmt.Print(jsn["json"])
 
 }
 
