@@ -1,11 +1,8 @@
 package convert
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
-	"io"
-	"os"
 	"strings"
 
 	hcl "github.com/hashicorp/hcl/v2"
