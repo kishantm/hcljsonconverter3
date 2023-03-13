@@ -20,26 +20,26 @@ type Options struct {
 }
 
 func String(filename string) (map[string]interface{}, error) {
-	buffer := bytes.NewBuffer([]byte{})
+	//buffer := bytes.NewBuffer([]byte{})
 	var options Options
 
 	data := make(map[string]interface{})
 
-	// Read input file
-	var stream io.Reader
-	file, err := os.Open(filename)
-	if err != nil {
-		return nil, fmt.Errorf("convert to json: %w", err)
-	}
-	defer file.Close()
-	stream = file
-	_, err = buffer.ReadFrom(stream)
-	if err != nil {
-		return nil, fmt.Errorf("failed to read files. Error : %w", err)
-	}
-	buffer.WriteByte('\n') // just in case it doesn't have an ending newline
+	// // Read input file
+	// var stream io.Reader
+	// file, err := os.Open(filename)
+	// if err != nil {
+	// 	return nil, fmt.Errorf("convert to json: %w", err)
+	// }
+	// defer file.Close()
+	// stream = file
+	// _, err = buffer.ReadFrom(stream)
+	// if err != nil {
+	// 	return nil, fmt.Errorf("failed to read files. Error : %w", err)
+	// }
+	// buffer.WriteByte('\n') // just in case it doesn't have an ending newline
 
-	converted, lineInfo, err := Bytes(buffer.Bytes(), filename, options)
+	converted, lineInfo, err := Bytes([]byte(filename), "", options)
 	if err != nil {
 
 		return nil, fmt.Errorf("failed to convert file: %w", err)
@@ -48,6 +48,7 @@ func String(filename string) (map[string]interface{}, error) {
 	data["json"] = string(converted)
 	data["lines"] = string(lineInfo)
 	return data, nil
+
 
 }
 
