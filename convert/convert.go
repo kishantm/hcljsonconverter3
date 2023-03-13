@@ -46,7 +46,6 @@ func String(filename string) (map[string]interface{}, error) {
 	data["lines"] = string(lineInfo)
 	return data, nil
 
-
 }
 
 // Bytes takes the contents of an HCL file, as bytes, and converts
